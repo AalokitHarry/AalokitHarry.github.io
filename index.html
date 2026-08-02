@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aalokit Harry — Video Editor · Graphic Designer · Videographer · 3D Artist</title>
+<meta name="description" content="Aalokit Harry is a video editor, graphic designer, videographer and self-taught 3D/VFX artist based in Bhopal, India, crafting fluid, story-driven visuals for brands and creators.">
+
+<!-- Favicon -->
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ============ PRELOADER ============ -->
+<div class="preloader" id="preloader" aria-hidden="true">
+  <div class="preloader__mark">AH</div>
+  <div class="preloader__bar"><span id="preloaderFill"></span></div>
+</div>
+
+<!-- ============ CUSTOM CURSOR ============ -->
+<div class="cursor" id="cursorDot" aria-hidden="true"></div>
+<div class="cursor cursor--ring" id="cursorRing" aria-hidden="true"></div>
+
+<!-- ============ NOISE / GRAIN OVERLAY ============ -->
+<div class="grain" aria-hidden="true"></div>
+
+<!-- ============ HEADER ============ -->
+<header class="site-header" id="siteHeader">
+  <div class="container header__inner">
+    <a href="#top" class="logo" data-cursor="link">Aalokit<span>.</span>Harry</a>
+
+    <nav class="nav" id="primaryNav">
+      <a href="#work" data-cursor="link">Work</a>
+      <a href="#about" data-cursor="link">About</a>
+      <a href="#services" data-cursor="link">Services</a>
+      <a href="#contact" data-cursor="link">Contact</a>
+    </nav>
+
+    <div class="header__actions">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" data-cursor="link">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.6M12 18.9v2.6M4.5 12H2M22 12h-2.5M5.6 5.6l1.8 1.8M16.6 16.6l1.8 1.8M18.4 5.6l-1.8 1.8M7.4 16.6l-1.8 1.8"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.8 6.8 0 0 0 10.5 10.5Z"/></svg>
+      </button>
+      <a href="#contact" class="btn btn--sm btn--outline nav-cta" data-cursor="link">Let's Talk</a>
+      <button class="burger" id="burgerBtn" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+</header>
+
+<!-- Mobile fullscreen menu (kept outside <header> so its own position:fixed
+     is never re-parented by the header's scroll-hide transform) -->
+<div class="mobile-menu" id="mobileMenu">
+  <nav>
+    <a href="#work">Work</a>
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <div class="mobile-menu__foot">
+    <a href="mailto:aalokitharry1995@gmail.com">aalokitharry1995@gmail.com</a>
+    <div class="mobile-menu__social">
+      <a href="#" target="_blank" rel="noopener">Instagram</a>
+      <a href="#" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://www.artstation.com/aalokitharry" target="_blank" rel="noopener">ArtStation</a>
+    </div>
+  </div>
+</div>
+
+<main id="top">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="hero">
+    <div class="hero__blob" aria-hidden="true"></div>
+    <div class="container hero__inner">
+      <p class="eyebrow reveal-up">
+        <span class="dot-live"></span> Available for freelance &amp; collab work
+      </p>
+
+      <h1 class="hero__title">
+        <span class="line"><span class="reveal-line">Video Editor.</span></span>
+        <span class="line"><span class="reveal-line">Graphic Designer.</span></span>
+        <span class="line"><span class="reveal-line hero__title--accent">Videographer.</span></span>
+      </h1>
+
+      <p class="hero__sub reveal-up" data-delay="1">
+        I'm <strong>Aalokit Harry</strong> — I cut, shoot and design visuals that move people.
+        From frame-accurate edits to brand identities, every project gets the same obsession
+        with rhythm, clarity and craft.
+      </p>
+
+      <div class="hero__ctas reveal-up" data-delay="2">
+        <a href="#work" class="btn btn--primary magnetic" data-cursor="link">
+          <span>View My Work</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg>
+        </a>
+        <a href="#contact" class="btn btn--ghost magnetic" data-cursor="link">Start a Project</a>
+      </div>
+    </div>
+
+    <a href="#marquee" class="scroll-cue" data-cursor="link" aria-label="Scroll down">
+      <span>Scroll</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 4v15M6 13l6 6 6-6"/></svg>
+    </a>
+  </section>
+
+  <!-- ============ MARQUEE ============ -->
+  <section class="marquee-section" id="marquee">
+    <div class="marquee" data-speed="normal">
+      <div class="marquee__track">
+        <span>Premiere&nbsp;Pro</span><span>·</span><span>After&nbsp;Effects</span><span>·</span>
+        <span>DaVinci&nbsp;Resolve</span><span>·</span><span>Photoshop</span><span>·</span>
+        <span>Illustrator</span><span>·</span><span>Figma</span><span>·</span>
+        <span>Blender</span><span>·</span><span>Lightroom</span><span>·</span>
+        <span>Premiere&nbsp;Pro</span><span>·</span><span>After&nbsp;Effects</span><span>·</span>
+        <span>DaVinci&nbsp;Resolve</span><span>·</span><span>Photoshop</span><span>·</span>
+        <span>Illustrator</span><span>·</span><span>Figma</span><span>·</span>
+        <span>Blender</span><span>·</span><span>Lightroom</span><span>·</span>
+      </div>
+    </div>
+    <div class="marquee marquee--reverse">
+      <div class="marquee__track">
+        <span>Colour&nbsp;Grading</span><span>·</span><span>Motion&nbsp;Graphics</span><span>·</span>
+        <span>Brand&nbsp;Identity</span><span>·</span><span>Sound&nbsp;Design</span><span>·</span>
+        <span>Reels&nbsp;&amp;&nbsp;Shorts</span><span>·</span><span>Photography</span><span>·</span><span>VFX&nbsp;Simulation</span><span>·</span>
+        <span>Colour&nbsp;Grading</span><span>·</span><span>Motion&nbsp;Graphics</span><span>·</span>
+        <span>Brand&nbsp;Identity</span><span>·</span><span>Sound&nbsp;Design</span><span>·</span>
+        <span>Reels&nbsp;&amp;&nbsp;Shorts</span><span>·</span><span>Photography</span><span>·</span><span>VFX&nbsp;Simulation</span><span>·</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section class="about" id="about">
+    <div class="container about__inner">
+      <div class="about__media reveal-up">
+        <div class="about__frame">
+          <img src="assets/profile-photo-large.jpg" alt="Aalokit Harry" class="about__photo">
+        </div>
+        <div class="about__badge">
+          <strong>5+</strong>
+          <span>Years crafting visuals</span>
+        </div>
+      </div>
+
+      <div class="about__content">
+        <p class="section-eyebrow reveal-up">About Me</p>
+        <h2 class="section-title reveal-up">
+          I turn raw footage and rough ideas into visuals people remember.
+        </h2>
+        <p class="about__location reveal-up">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s7-6.1 7-11.5A7 7 0 0 0 5 9.5C5 14.9 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.4"/></svg>
+          Bhopal, India
+        </p>
+        <p class="about__text reveal-up" data-delay="1">
+          I'm Aalokit Harry — a self-taught 3D artist, video editor and graphic designer.
+          Blender is my software of choice, though I stay tool-agnostic across the pipeline.
+          My focus spans VFX, concept art, animation, 3D modeling and integration, alongside
+          professional work as a graphic designer and video editor.
+        </p>
+        <p class="about__text reveal-up" data-delay="2">
+          Whether it's a simulation built frame-by-frame in Blender, a brand identity, or a
+          shoot cut for pace and rhythm, I care about the same things: craft, clarity and
+          finishing what I start.
+        </p>
+
+        <div class="stats reveal-up" data-delay="2">
+          <div class="stat">
+            <span class="stat__num" data-count="120">0</span><span class="stat__plus">+</span>
+            <p>Projects Delivered</p>
+          </div>
+          <div class="stat">
+            <span class="stat__num" data-count="45">0</span><span class="stat__plus">+</span>
+            <p>Happy Clients</p>
+          </div>
+          <div class="stat">
+            <span class="stat__num" data-count="5">0</span><span class="stat__plus">+</span>
+            <p>Years Experience</p>
+          </div>
+          <div class="stat">
+            <span class="stat__num" data-count="8">0</span>
+            <p>Awards &amp; Features</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SERVICES ============ -->
+  <section class="services" id="services">
+    <div class="container">
+      <div class="section-head">
+        <p class="section-eyebrow reveal-up">What I Do</p>
+        <h2 class="section-title reveal-up">Four crafts. One eye for detail.</h2>
+      </div>
+
+      <div class="services__grid">
+        <article class="service-card reveal-up">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2.5" y="5" width="14" height="14" rx="2"/><path d="M21.5 8.5 16.5 12l5 3.5v-7Z"/></svg>
+          </div>
+          <h3>Video Editing</h3>
+          <p>Narrative-first edits — pacing, sound design and colour that keep every second earning attention, from long-form to short-form.</p>
+          <ul class="service-card__tags">
+            <li>Reels &amp; Shorts</li><li>YouTube</li><li>Colour Grading</li>
+          </ul>
+        </article>
+
+        <article class="service-card reveal-up" data-delay="1">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 19 19 4M8 4h11v11"/><circle cx="7" cy="17" r="2.6"/></svg>
+          </div>
+          <h3>Graphic Design</h3>
+          <p>Identity systems, social templates and campaign visuals built on clean grids and typography that actually get read.</p>
+          <ul class="service-card__tags">
+            <li>Branding</li><li>Social Kits</li><li>Print</li>
+          </ul>
+        </article>
+
+        <article class="service-card reveal-up" data-delay="2">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2.5" y="6" width="14" height="11" rx="2"/><path d="M16.5 10.5 21.5 7v9l-5-3.5Z"/></svg>
+          </div>
+          <h3>Videography</h3>
+          <p>On-location shoots — brand films, interviews and events — planned and captured with the edit already in mind.</p>
+          <ul class="service-card__tags">
+            <li>Brand Films</li><li>Events</li><li>Interviews</li>
+          </ul>
+        </article>
+
+        <article class="service-card reveal-up" data-delay="3">
+          <div class="service-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2.5 21 7.5v9L12 21.5 3 16.5v-9L12 2.5Z"/><path d="M3 7.5 12 12l9-4.5M12 12v9.5"/></svg>
+          </div>
+          <h3>3D &amp; VFX</h3>
+          <p>Self-taught in Blender — concept renders, simulations and VFX integration for objects, environments and everything between.</p>
+          <ul class="service-card__tags">
+            <li>Blender</li><li>VFX Sims</li><li>3D Modeling</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WORK ============ -->
+  <section class="work" id="work">
+    <div class="container">
+      <div class="section-head section-head--split">
+        <div>
+          <p class="section-eyebrow reveal-up">Selected Work</p>
+          <h2 class="section-title reveal-up">A few projects worth showing off.</h2>
+        </div>
+        <div class="filters reveal-up" role="tablist" aria-label="Filter projects">
+          <button class="filter-btn is-active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="video">Video Editing</button>
+          <button class="filter-btn" data-filter="design">Graphic Design</button>
+          <button class="filter-btn" data-filter="photo">Videography</button>
+          <button class="filter-btn" data-filter="3d">3D &amp; VFX</button>
+        </div>
+      </div>
+
+      <div class="work__grid" id="workGrid">
+        <!-- Cards injected/duplicated pattern; written statically for clarity -->
+        <article class="work-card reveal-up" data-cat="video" data-title="Midnight Run — Brand Film" data-desc="A 60-second brand film cut for pace and rhythm, graded for a warm nocturnal look. (Replace with your real project, embed or link.)" data-tag="Video Editing">
+          <div class="work-card__media grad-1" data-cursor="view">
+            <span class="play-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+          </div>
+          <div class="work-card__info">
+            <h3>Midnight Run</h3>
+            <span>Video Editing</span>
+          </div>
+        </article>
+
+        <article class="work-card reveal-up" data-delay="1" data-cat="design" data-title="Lumen — Brand Identity" data-desc="Full identity system: logo, type pairing and a social template kit for a lighting-design studio. (Replace with your real project images.)" data-tag="Graphic Design">
+          <div class="work-card__media grad-2" data-cursor="view">
+            <span class="frame-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.6"/><path d="M21 15l-5-5-11 11"/></svg></span>
+          </div>
+          <div class="work-card__info">
+            <h3>Lumen</h3>
+            <span>Graphic Design</span>
+          </div>
+        </article>
+
+        <article class="work-card reveal-up" data-delay="2" data-cat="photo" data-title="Founders Series — Interviews" data-desc="A four-part interview shoot, single-camera setup with natural light, cut into a short documentary series. (Replace with your real footage.)" data-tag="Videography">
+          <div class="work-card__media grad-3" data-cursor="view">
+            <span class="play-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+          </div>
+          <div class="work-card__info">
+            <h3>Founders Series</h3>
+            <span>Videography</span>
+          </div>
+        </article>
+
+        <article class="work-card reveal-up" data-cat="video" data-title="Pulse — Product Launch Reel" data-desc="15-second vertical launch teaser optimised for retention on Reels and Shorts. (Replace with your real project, embed or link.)" data-tag="Video Editing">
+          <div class="work-card__media grad-4" data-cursor="view">
+            <span class="play-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+          </div>
+          <div class="work-card__info">
+            <h3>Pulse</h3>
+            <span>Video Editing</span>
+          </div>
+        </article>
+
+        <article class="work-card reveal-up" data-delay="1" data-cat="design" data-title="Northfield — Poster Series" data-desc="Typographic poster series for a music festival, built on a modular grid system. (Replace with your real project images.)" data-tag="Graphic Design">
+          <div class="work-card__media grad-5" data-cursor="view">
+            <span class="frame-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.6"/><path d="M21 15l-5-5-11 11"/></svg></span>
+          </div>
+          <div class="work-card__info">
+            <h3>Northfield</h3>
+            <span>Graphic Design</span>
+          </div>
+        </article>
+
+        <article class="work-card reveal-up" data-delay="2" data-cat="photo" data-title="On Location — Event Coverage" data-desc="Full-day multi-camera event coverage, delivered as a same-week highlight edit. (Replace with your real footage.)" data-tag="Videography">
+          <div class="work-card__media grad-6" data-cursor="view">
+            <span class="play-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+          </div>
+          <div class="work-card__info">
+            <h3>On Location</h3>
+            <span>Videography</span>
+          </div>
+        </article>
+
+        <article class="work-card reveal-up" data-cat="3d" data-title="Skull &amp; Smoke Simulation" data-desc="A stylised skull, fully modeled, shaded and lit in Blender, with a hand-tuned smoke simulation drifting through the eye sockets." data-tag="3D &amp; VFX">
+          <div class="work-card__media" data-cursor="view">
+            <img src="assets/work-skull-smoke.jpg" alt="Skull &amp; Smoke Simulation — Blender 3D render">
+            <span class="play-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+          </div>
+          <div class="work-card__info">
+            <h3>Skull &amp; Smoke</h3>
+            <span>3D &amp; VFX</span>
+          </div>
+        </article>
+
+        <article class="work-card reveal-up" data-delay="1" data-cat="3d" data-title="Magical Potion" data-desc="A hand-modeled fantasy potion bottle — procedural glass and liquid shading, feather detailing and studio lighting, built in Blender." data-tag="3D &amp; VFX">
+          <div class="work-card__media" data-cursor="view">
+            <img src="assets/work-magical-potion.jpg" alt="Magical Potion — Blender 3D render">
+            <span class="frame-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.6"/><path d="M21 15l-5-5-11 11"/></svg></span>
+          </div>
+          <div class="work-card__info">
+            <h3>Magical Potion</h3>
+            <span>3D &amp; VFX</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TESTIMONIALS ============ -->
+  <section class="testimonials" id="testimonials">
+    <div class="container">
+      <p class="section-eyebrow reveal-up center">Kind Words</p>
+      <h2 class="section-title reveal-up center">What clients say</h2>
+
+      <div class="testi" id="testi">
+        <div class="testi__viewport">
+          <div class="testi__track" id="testiTrack">
+            <blockquote class="testi__slide">
+              <p>“Aalokit turned three hours of raw footage into a two-minute film that made our whole team emotional. Fast, sharp, and endlessly patient with revisions.”</p>
+              <footer><strong>Client Name</strong><span>Founder, Company — placeholder quote</span></footer>
+            </blockquote>
+            <blockquote class="testi__slide">
+              <p>“The brand identity work was on point from the first draft. Clean, modern, and it actually held up across every platform we used it on.”</p>
+              <footer><strong>Client Name</strong><span>Marketing Lead, Company — placeholder quote</span></footer>
+            </blockquote>
+            <blockquote class="testi__slide">
+              <p>“Best collaborator we've worked with for event coverage. Shows up prepared, shoots efficiently, and the turnaround time is unmatched.”</p>
+              <footer><strong>Client Name</strong><span>Event Director, Company — placeholder quote</span></footer>
+            </blockquote>
+          </div>
+        </div>
+        <div class="testi__dots" id="testiDots"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section class="contact" id="contact">
+    <div class="container contact__inner">
+      <p class="section-eyebrow reveal-up center">Get In Touch</p>
+      <h2 class="contact__title reveal-up center">Let's create<br>something great.</h2>
+      <p class="contact__sub reveal-up center">
+        Have a project in mind? Tell me about it — I usually reply within a day.
+      </p>
+
+      <button class="email-btn reveal-up magnetic" id="copyEmailBtn" data-cursor="link">
+        <span id="emailText">aalokitharry1995@gmail.com</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="4" width="13" height="13" rx="2"/><path d="M8 16v2a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2h-2"/></svg>
+      </button>
+      <span class="copy-toast" id="copyToast">Copied to clipboard ✓</span>
+
+      <div class="socials reveal-up">
+        <a href="#" target="_blank" rel="noopener" data-cursor="link">Instagram</a>
+        <a href="#" target="_blank" rel="noopener" data-cursor="link">YouTube</a>
+        <a href="https://www.artstation.com/aalokitharry" target="_blank" rel="noopener" data-cursor="link">ArtStation</a>
+        <a href="#" target="_blank" rel="noopener" data-cursor="link">Vimeo</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="container footer__inner">
+    <a href="#top" class="logo logo--sm" data-cursor="link">Aalokit<span>.</span>Harry</a>
+    <p>&copy; <span id="year"></span> Aalokit Harry. All rights reserved.</p>
+    <button class="to-top" id="toTopBtn" aria-label="Back to top" data-cursor="link">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 19V5M6 11l6-6 6 6"/></svg>
+    </button>
+  </div>
+</footer>
+
+<!-- ============ LIGHTBOX MODAL ============ -->
+<div class="modal" id="workModal" aria-hidden="true">
+  <div class="modal__backdrop" id="modalBackdrop"></div>
+  <div class="modal__panel">
+    <button class="modal__close" id="modalClose" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 6l12 12M18 6 6 18"/></svg>
+    </button>
+    <div class="modal__media" id="modalMedia"></div>
+    <div class="modal__body">
+      <span class="modal__tag" id="modalTag"></span>
+      <h3 id="modalTitle"></h3>
+      <p id="modalDesc"></p>
+    </div>
+  </div>
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>
