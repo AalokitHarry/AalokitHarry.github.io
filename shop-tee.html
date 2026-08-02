@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CHOSEN — "Called, Not Common" Tee · Aalokit Harry</title>
+<meta name="description" content="CHOSEN — Called, Not Common tee. Oversized fit, printed on demand. ₹499. Order via WhatsApp, pay COD or UPI.">
+
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ============ PRELOADER ============ -->
+<div class="preloader" id="preloader" aria-hidden="true">
+  <div class="preloader__mark">AH</div>
+  <div class="preloader__bar"><span id="preloaderFill"></span></div>
+</div>
+
+<!-- ============ CUSTOM CURSOR ============ -->
+<div class="cursor" id="cursorDot" aria-hidden="true"></div>
+<div class="cursor cursor--ring" id="cursorRing" aria-hidden="true"></div>
+
+<!-- ============ NOISE / GRAIN OVERLAY ============ -->
+<div class="grain" aria-hidden="true"></div>
+
+<!-- ============ HEADER ============ -->
+<header class="site-header" id="siteHeader">
+  <div class="container header__inner">
+    <a href="index.html" class="logo" data-cursor="link">Aalokit<span>.</span>Harry</a>
+
+    <nav class="nav" id="primaryNav">
+      <a href="index.html#work" data-cursor="link">Work</a>
+      <a href="index.html#about" data-cursor="link">About</a>
+      <a href="index.html#services" data-cursor="link">Services</a>
+      <a href="index.html#shop" data-cursor="link">Shop</a>
+      <a href="index.html#contact" data-cursor="link">Contact</a>
+    </nav>
+
+    <div class="header__actions">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" data-cursor="link">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.6M12 18.9v2.6M4.5 12H2M22 12h-2.5M5.6 5.6l1.8 1.8M16.6 16.6l1.8 1.8M18.4 5.6l-1.8 1.8M7.4 16.6l-1.8 1.8"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.8 6.8 0 0 0 10.5 10.5Z"/></svg>
+      </button>
+      <a href="index.html#contact" class="btn btn--sm btn--outline nav-cta" data-cursor="link">Let's Talk</a>
+      <button class="burger" id="burgerBtn" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <nav>
+    <a href="index.html#work">Work</a>
+    <a href="index.html#about">About</a>
+    <a href="index.html#services">Services</a>
+    <a href="index.html#shop">Shop</a>
+    <a href="index.html#contact">Contact</a>
+  </nav>
+  <div class="mobile-menu__foot">
+    <a href="mailto:aalokitharry1995@gmail.com">aalokitharry1995@gmail.com</a>
+    <div class="mobile-menu__social">
+      <a href="#" target="_blank" rel="noopener">Instagram</a>
+      <a href="#" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://www.artstation.com/aalokitharry" target="_blank" rel="noopener">ArtStation</a>
+    </div>
+  </div>
+</div>
+
+<main>
+
+  <section class="product-page">
+    <div class="container">
+      <a href="index.html#shop" class="back-link reveal-up" data-cursor="link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+        Back to Shop
+      </a>
+
+      <div class="product-page__inner">
+        <div class="shop__gallery reveal-up">
+          <div class="shop__media">
+            <img src="assets/shop-tee-front.jpg" alt="CHOSEN — Called, Not Common tee, front print" id="shopMainImg">
+          </div>
+          <div class="shop__thumbs">
+            <button class="shop__thumb is-active" data-img="assets/shop-tee-front.jpg" aria-label="Front print">
+              <img src="assets/shop-tee-front.jpg" alt="">
+            </button>
+            <button class="shop__thumb" data-img="assets/shop-tee-back.jpg" aria-label="Back print">
+              <img src="assets/shop-tee-back.jpg" alt="">
+            </button>
+            <button class="shop__thumb" data-img="assets/shop-tee-grid.jpg" aria-label="Full detail grid">
+              <img src="assets/shop-tee-grid.jpg" alt="">
+            </button>
+          </div>
+        </div>
+
+        <div class="product-page__info reveal-up" data-delay="1">
+          <p class="section-eyebrow">Merch</p>
+          <h1>CHOSEN — "Called, Not Common" Tee</h1>
+          <p class="product-page__desc">
+            Oversized fit, chest print up front, full graphic on the back — "Called, Not Common," John 15:16.
+            Designed in-house and printed on demand.
+          </p>
+          <span class="shop__price shop__price--lg">₹499</span>
+
+          <div class="size-selector">
+            <span class="size-selector__label">Size</span>
+            <div class="size-selector__pills" id="sizePills">
+              <button class="size-pill" data-size="S">S</button>
+              <button class="size-pill" data-size="M">M</button>
+              <button class="size-pill is-active" data-size="L">L</button>
+              <button class="size-pill" data-size="XL">XL</button>
+              <button class="size-pill" data-size="XXL">XXL</button>
+            </div>
+          </div>
+
+          <div class="shop__payments">
+            <span>COD</span><span>UPI</span><span>WhatsApp Pay</span>
+          </div>
+
+          <a href="#" target="_blank" rel="noopener" class="btn btn--primary shop__btn magnetic" id="buyNowBtn" data-cursor="link">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-1.9-.9-.3-.1-.4-.1-.6.1-.2.3-.7.9-.8 1-.2.2-.3.2-.5.1-.3-.1-1.2-.4-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.3-.4.1-.2 0-.3 0-.5s-.6-1.5-.9-2c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1.1 2.7c.1.2 1.8 2.8 4.4 3.9.6.3 1.1.4 1.5.5.6.2 1.2.2 1.6.1.5-.1 1.6-.6 1.8-1.3.2-.6.2-1.1.2-1.2-.1-.1-.2-.2-.5-.3z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.2-1.4c1.4.8 3.1 1.2 4.8 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
+            Buy Now on WhatsApp
+          </a>
+          <p class="product-page__note">Tap Buy Now to confirm your size and delivery address over WhatsApp.</p>
+        </div>
+      </div>
+
+      <div class="order-steps reveal-up" data-delay="2">
+        <h2>How ordering works</h2>
+        <ol>
+          <li>
+            <span class="order-steps__num">1</span>
+            <div><strong>Pick your size</strong><p>Choose from S–XXL above.</p></div>
+          </li>
+          <li>
+            <span class="order-steps__num">2</span>
+            <div><strong>Tap Buy Now</strong><p>Opens WhatsApp with your order pre-filled.</p></div>
+          </li>
+          <li>
+            <span class="order-steps__num">3</span>
+            <div><strong>Confirm details</strong><p>Share your delivery address and confirm the order in chat.</p></div>
+          </li>
+          <li>
+            <span class="order-steps__num">4</span>
+            <div><strong>Pay &amp; receive</strong><p>Pay via COD or UPI. Printed on demand and shipped after confirmation.</p></div>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="container footer__inner">
+    <a href="index.html" class="logo logo--sm" data-cursor="link">Aalokit<span>.</span>Harry</a>
+    <p>&copy; <span id="year"></span> Aalokit Harry. All rights reserved.</p>
+    <button class="to-top" id="toTopBtn" aria-label="Back to top" data-cursor="link">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 19V5M6 11l6-6 6 6"/></svg>
+    </button>
+  </div>
+</footer>
+
+<!-- ============ LIGHTBOX MODAL (unused on this page, present so shared JS can safely bind) ============ -->
+<div class="modal" id="workModal" aria-hidden="true">
+  <div class="modal__backdrop" id="modalBackdrop"></div>
+  <div class="modal__panel">
+    <button class="modal__close" id="modalClose" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 6l12 12M18 6 6 18"/></svg>
+    </button>
+    <div class="modal__media" id="modalMedia"></div>
+    <div class="modal__body">
+      <span class="modal__tag" id="modalTag"></span>
+      <h3 id="modalTitle"></h3>
+      <p id="modalDesc"></p>
+    </div>
+  </div>
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>

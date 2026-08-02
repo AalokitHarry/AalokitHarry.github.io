@@ -227,29 +227,67 @@
   /* ---------- Testimonial carousel ---------- */
   const track = document.getElementById("testiTrack");
   const dotsWrap = document.getElementById("testiDots");
-  const slides = track.querySelectorAll(".testi__slide");
-  let activeSlide = 0;
-  let testiTimer;
+  if (track && dotsWrap) {
+    const slides = track.querySelectorAll(".testi__slide");
+    let activeSlide = 0;
+    let testiTimer;
 
-  slides.forEach((_, i) => {
-    const d = document.createElement("button");
-    if (i === 0) d.classList.add("is-active");
-    d.addEventListener("click", () => goToSlide(i));
-    dotsWrap.appendChild(d);
-  });
-  const dots = dotsWrap.querySelectorAll("button");
+    slides.forEach((_, i) => {
+      const d = document.createElement("button");
+      if (i === 0) d.classList.add("is-active");
+      d.addEventListener("click", () => goToSlide(i));
+      dotsWrap.appendChild(d);
+    });
+    const dots = dotsWrap.querySelectorAll("button");
 
-  function goToSlide(i) {
-    activeSlide = i;
-    track.style.transform = `translateX(-${i * 100}%)`;
-    dots.forEach((d, di) => d.classList.toggle("is-active", di === i));
+    function goToSlide(i) {
+      activeSlide = i;
+      track.style.transform = `translateX(-${i * 100}%)`;
+      dots.forEach((d, di) => d.classList.toggle("is-active", di === i));
+      resetTestiTimer();
+    }
+    function resetTestiTimer() {
+      clearInterval(testiTimer);
+      testiTimer = setInterval(() => goToSlide((activeSlide + 1) % slides.length), 5500);
+    }
     resetTestiTimer();
   }
-  function resetTestiTimer() {
-    clearInterval(testiTimer);
-    testiTimer = setInterval(() => goToSlide((activeSlide + 1) % slides.length), 5500);
+
+  /* ---------- Shop gallery ---------- */
+  const shopMainImg = document.getElementById("shopMainImg");
+  const shopThumbs = document.querySelectorAll(".shop__thumb");
+  shopThumbs.forEach((thumb) => {
+    thumb.addEventListener("click", () => {
+      if (!shopMainImg) return;
+      shopMainImg.src = thumb.dataset.img;
+      shopThumbs.forEach((t) => t.classList.remove("is-active"));
+      thumb.classList.add("is-active");
+    });
+  });
+
+  /* ---------- Product page: size selector + Buy Now link ---------- */
+  const sizePills = document.querySelectorAll(".size-pill");
+  const buyNowBtn = document.getElementById("buyNowBtn");
+  const WHATSAPP_NUMBER = "919806486042";
+  const PRODUCT_NAME = "CHOSEN tee";
+  const PRODUCT_PRICE = "₹499";
+
+  function updateBuyNowLink(size) {
+    if (!buyNowBtn) return;
+    const message = `Hi! I'd like to order the ${PRODUCT_NAME} (${PRODUCT_PRICE}), size: ${size}.`;
+    buyNowBtn.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
   }
-  resetTestiTimer();
+  if (sizePills.length) {
+    const activePill = document.querySelector(".size-pill.is-active") || sizePills[0];
+    updateBuyNowLink(activePill.dataset.size);
+    sizePills.forEach((pill) => {
+      pill.addEventListener("click", () => {
+        sizePills.forEach((p) => p.classList.remove("is-active"));
+        pill.classList.add("is-active");
+        updateBuyNowLink(pill.dataset.size);
+      });
+    });
+  }
 
   /* ---------- Copy email ---------- */
   const copyBtn = document.getElementById("copyEmailBtn");
