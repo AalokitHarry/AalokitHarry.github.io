@@ -455,6 +455,12 @@ section{ padding: clamp(70px, 11vw, 140px) 0; }
 .product-page__desc{ margin-top:18px; color: var(--text-soft); line-height:1.7; font-size:1rem; max-width:440px; }
 .shop__price--lg{ font-size:1.8rem; margin-top:22px; }
 
+.product-page__ethics{
+  display:flex; align-items:flex-start; gap:9px; margin-top:16px; max-width:380px;
+  font-size:.83rem; color: var(--text-soft); line-height:1.55;
+}
+.product-page__ethics svg{ width:17px; height:17px; flex-shrink:0; margin-top:1px; color: var(--accent); }
+
 .size-selector{ margin-top:28px; }
 .size-selector__label{ display:block; font-size:.8rem; font-weight:600; color: var(--text-soft); margin-bottom:10px; }
 .size-selector__pills{ display:flex; gap:8px; flex-wrap:wrap; }
@@ -466,6 +472,54 @@ section{ padding: clamp(70px, 11vw, 140px) 0; }
 .size-pill.is-active{ background: var(--text); color: var(--bg); border-color: var(--text); }
 
 .product-page__note{ margin-top:14px; font-size:.82rem; color: var(--text-soft); }
+
+.order-form{
+  max-height:0; overflow:hidden; opacity:0;
+  transition: max-height .6s var(--ease), opacity .5s var(--ease), margin-top .6s var(--ease);
+}
+.order-form.is-open{ max-height:900px; opacity:1; margin-top:26px; }
+.order-form__field{ margin-top:18px; }
+.order-form__field:first-child{ margin-top:0; }
+.order-form__field label{
+  display:block; font-size:.8rem; font-weight:600; color: var(--text-soft); margin-bottom:8px;
+}
+.order-form__field input, .order-form__field textarea{
+  width:100%; padding:12px 14px; border-radius:10px; border:1px solid var(--line);
+  background: var(--bg-alt); color: var(--text); font-family: var(--font-body); font-size:.92rem;
+  transition: border-color .3s;
+}
+.order-form__field input:focus, .order-form__field textarea:focus{
+  outline:none; border-color: var(--accent);
+}
+.order-form__field textarea{ resize:vertical; }
+
+.payment-selector{ display:flex; gap:8px; flex-wrap:wrap; }
+.payment-pill{
+  padding:9px 16px; border-radius:100px; border:1px solid var(--line); font-size:.85rem; font-weight:600;
+  color: var(--text-soft); transition: all .3s var(--ease);
+}
+.payment-pill:hover{ border-color: var(--text); color: var(--text); }
+.payment-pill.is-active{ background: var(--text); color: var(--bg); border-color: var(--text); }
+
+.order-form #submitOrderBtn{ margin-top:26px; width:100%; justify-content:center; }
+
+.order-confirmation{
+  max-height:0; overflow:hidden; opacity:0; text-align:center;
+  transition: max-height .6s var(--ease), opacity .5s var(--ease), margin-top .6s var(--ease);
+}
+.order-confirmation.is-open{ max-height:500px; opacity:1; margin-top:26px; }
+.order-confirmation__icon{
+  width:52px; height:52px; border-radius:50%; background: var(--accent-soft); color: var(--accent);
+  display:flex; align-items:center; justify-content:center; margin:0 auto;
+}
+.order-confirmation__icon svg{ width:24px; height:24px; }
+.order-confirmation h3{
+  font-family: var(--font-display); font-size:1.2rem; font-weight:600; margin-top:16px;
+}
+.order-confirmation p{
+  margin-top:10px; color: var(--text-soft); font-size:.9rem; line-height:1.65;
+}
+.order-confirmation .shop__btn{ margin-top:20px; }
 
 .order-steps{
   margin-top:90px; padding-top:60px; border-top:1px solid var(--line);

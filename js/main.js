@@ -265,27 +265,96 @@
     });
   });
 
-  /* ---------- Product page: size selector + Buy Now link ---------- */
+  /* ---------- Product page: size selector, buy flow, order form ---------- */
   const sizePills = document.querySelectorAll(".size-pill");
+  const paymentPills = document.querySelectorAll(".payment-pill");
   const buyNowBtn = document.getElementById("buyNowBtn");
+  const orderForm = document.getElementById("orderForm");
+  const buyNowNote = document.getElementById("buyNowNote");
   const WHATSAPP_NUMBER = "919806486042";
   const PRODUCT_NAME = "CHOSEN tee";
   const PRODUCT_PRICE = "₹499";
 
-  function updateBuyNowLink(size) {
-    if (!buyNowBtn) return;
-    const message = `Hi! I'd like to order the ${PRODUCT_NAME} (${PRODUCT_PRICE}), size: ${size}.`;
-    buyNowBtn.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
-  }
+  let selectedSize = "";
+  let selectedPayment = "";
+
   if (sizePills.length) {
-    const activePill = document.querySelector(".size-pill.is-active") || sizePills[0];
-    updateBuyNowLink(activePill.dataset.size);
+    const activeSizePill = document.querySelector(".size-pill.is-active") || sizePills[0];
+    selectedSize = activeSizePill.dataset.size;
     sizePills.forEach((pill) => {
       pill.addEventListener("click", () => {
         sizePills.forEach((p) => p.classList.remove("is-active"));
         pill.classList.add("is-active");
-        updateBuyNowLink(pill.dataset.size);
+        selectedSize = pill.dataset.size;
       });
+    });
+  }
+
+  if (paymentPills.length) {
+    const activePaymentPill = document.querySelector(".payment-pill.is-active") || paymentPills[0];
+    selectedPayment = activePaymentPill.dataset.payment;
+    paymentPills.forEach((pill) => {
+      pill.addEventListener("click", () => {
+        paymentPills.forEach((p) => p.classList.remove("is-active"));
+        pill.classList.add("is-active");
+        selectedPayment = pill.dataset.payment;
+      });
+    });
+  }
+
+  const orderConfirmation = document.getElementById("orderConfirmation");
+  const editOrderBtn = document.getElementById("editOrderBtn");
+
+  function openOrderForm() {
+    orderForm.classList.add("is-open");
+    orderForm.setAttribute("aria-hidden", "false");
+    if (buyNowNote) buyNowNote.textContent = "Fill in your details, then send the order on WhatsApp.";
+    if (orderConfirmation) {
+      orderConfirmation.classList.remove("is-open");
+      orderConfirmation.setAttribute("aria-hidden", "true");
+    }
+    setTimeout(() => {
+      orderForm.scrollIntoView({ behavior: "smooth", block: "center" });
+      const firstField = document.getElementById("orderName");
+      if (firstField) firstField.focus({ preventScroll: true });
+    }, 100);
+  }
+
+  if (buyNowBtn && orderForm) {
+    buyNowBtn.addEventListener("click", () => {
+      const alreadyOpen = orderForm.classList.contains("is-open");
+      if (alreadyOpen) {
+        orderForm.classList.remove("is-open");
+        orderForm.setAttribute("aria-hidden", "true");
+        if (buyNowNote) buyNowNote.textContent = "Tap Buy Now to enter your delivery details.";
+      } else {
+        openOrderForm();
+      }
+    });
+  }
+
+  if (editOrderBtn) {
+    editOrderBtn.addEventListener("click", openOrderForm);
+  }
+
+  if (orderForm) {
+    orderForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const name = document.getElementById("orderName").value.trim();
+      const phone = document.getElementById("orderPhone").value.trim();
+      const address = document.getElementById("orderAddress").value.trim();
+      const message = `Hi! I'd like to order the ${PRODUCT_NAME} (${PRODUCT_PRICE}), size: ${selectedSize}.\n\nName: ${name}\nPhone: ${phone}\nAddress: ${address}\nPayment method: ${selectedPayment}`;
+      const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+      window.open(url, "_blank", "noopener");
+
+      orderForm.classList.remove("is-open");
+      orderForm.setAttribute("aria-hidden", "true");
+      if (orderConfirmation) {
+        orderConfirmation.classList.add("is-open");
+        orderConfirmation.setAttribute("aria-hidden", "false");
+        orderConfirmation.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+      if (buyNowNote) buyNowNote.textContent = "";
     });
   }
 
