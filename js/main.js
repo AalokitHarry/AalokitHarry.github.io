@@ -186,9 +186,21 @@
     modalTitle.textContent = card.dataset.title || "";
     modalDesc.textContent = card.dataset.desc || "";
     modalTag.textContent = card.dataset.tag || "";
+    modalMedia.innerHTML = "";
+    modalMedia.style.backgroundImage = "";
     const mediaEl = card.querySelector(".work-card__media");
+    const youtubeId = card.dataset.youtube;
     const img = mediaEl.querySelector("img");
-    if (img) {
+    if (youtubeId) {
+      modalMedia.className = "modal__media modal__media--video";
+      const iframe = document.createElement("iframe");
+      iframe.src = `https://www.youtube.com/embed/${youtubeId}?rel=0`;
+      iframe.title = card.dataset.title || "Video";
+      iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+      iframe.allowFullscreen = true;
+      iframe.frameBorder = "0";
+      modalMedia.appendChild(iframe);
+    } else if (img) {
       modalMedia.className = "modal__media";
       modalMedia.style.backgroundImage = `url("${img.src}")`;
       modalMedia.style.backgroundSize = "cover";
@@ -196,7 +208,6 @@
     } else {
       const gradClass = gradClasses.find((g) => mediaEl.classList.contains(g)) || "grad-1";
       modalMedia.className = "modal__media " + gradClass;
-      modalMedia.style.backgroundImage = "";
     }
     modal.classList.add("is-open");
     modal.setAttribute("aria-hidden", "false");
@@ -206,6 +217,7 @@
     modal.classList.remove("is-open");
     modal.setAttribute("aria-hidden", "true");
     document.body.classList.remove("modal-open");
+    modalMedia.innerHTML = "";
   }
   workCards.forEach((card) => card.addEventListener("click", () => openModal(card)));
   document.getElementById("modalClose").addEventListener("click", closeModal);
