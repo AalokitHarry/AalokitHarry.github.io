@@ -83,6 +83,22 @@
     localStorage.setItem("ah-theme", next);
   });
 
+  /* ---------- Designer grid overlay ---------- */
+  const gridOverlay = document.getElementById("gridOverlay");
+  const gridToggle = document.getElementById("gridToggle");
+  if (gridOverlay && gridToggle) {
+    const toggleGrid = () => {
+      const showing = gridOverlay.classList.toggle("is-visible");
+      gridToggle.classList.toggle("is-active", showing);
+      gridOverlay.setAttribute("aria-hidden", showing ? "false" : "true");
+    };
+    gridToggle.addEventListener("click", toggleGrid);
+    window.addEventListener("keydown", (e) => {
+      const typing = /input|textarea/i.test(document.activeElement?.tagName || "");
+      if (!typing && (e.key === "g" || e.key === "G")) toggleGrid();
+    });
+  }
+
   /* ---------- Header scroll behaviour ---------- */
   const header = document.getElementById("siteHeader");
   let lastY = window.scrollY;
@@ -355,6 +371,118 @@
         orderConfirmation.scrollIntoView({ behavior: "smooth", block: "center" });
       }
       if (buyNowNote) buyNowNote.textContent = "";
+    });
+  }
+
+  /* ---------- Palette swatches ---------- */
+  document.querySelectorAll(".palette").forEach((palette) => {
+    const hint = palette.querySelector(".palette__hint");
+    const defaultHint = hint ? hint.textContent : "";
+    palette.querySelectorAll(".palette__swatch").forEach((swatch) => {
+      swatch.addEventListener("click", async () => {
+        const hex = swatch.dataset.hex;
+        try {
+          await navigator.clipboard.writeText(hex);
+        } catch (err) {
+          // Clipboard API unavailable — silently ignore, hint still confirms the hex
+        }
+        if (hint) {
+          hint.textContent = `Copied ${hex}`;
+          clearTimeout(hint._resetTimer);
+          hint._resetTimer = setTimeout(() => { hint.textContent = defaultHint; }, 1800);
+        }
+      });
+    });
+  });
+
+  /* ---------- Timeline toy (Video Editing) ---------- */
+  const timelineToy = document.getElementById("timelineToy");
+  const timelineWaveform = document.getElementById("timelineWaveform");
+  const timelinePlayhead = document.getElementById("timelinePlayhead");
+  const timelineTime = document.getElementById("timelineTime");
+  if (timelineToy && timelineWaveform && timelinePlayhead && timelineTime) {
+    const BAR_COUNT = 42;
+    const FAKE_DURATION = 14.5; // seconds
+    const FPS = 24;
+    let bars = [];
+    for (let i = 0; i < BAR_COUNT; i++) {
+      const bar = document.createElement("span");
+      const wave = Math.sin(i * 0.4) * 0.3 + Math.sin(i * 0.9) * 0.2;
+      const h = 22 + wave * 55 + Math.random() * 18;
+      bar.style.height = Math.max(10, Math.min(100, h)) + "%";
+      timelineWaveform.appendChild(bar);
+      bars.push(bar);
+    }
+    function formatTimecode(t) {
+      const mm = Math.floor(t / 60);
+      const ss = Math.floor(t % 60);
+      const ff = Math.floor((t % 1) * FPS);
+      const pad = (n) => String(n).padStart(2, "0");
+      return `00:${pad(mm)}:${pad(ss)}:${pad(ff)}`;
+    }
+    function scrubTo(clientX) {
+      const rect = timelineToy.getBoundingClientRect();
+      const ratio = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
+      timelinePlayhead.style.left = ratio * 100 + "%";
+      timelineTime.textContent = formatTimecode(ratio * FAKE_DURATION);
+      const activeCount = Math.round(ratio * BAR_COUNT);
+      bars.forEach((bar, i) => bar.classList.toggle("is-played", i < activeCount));
+    }
+    let scrubbing = false;
+    timelineToy.addEventListener("pointerdown", (e) => {
+      scrubbing = true;
+      scrubTo(e.clientX);
+    });
+    window.addEventListener("pointermove", (e) => {
+      if (scrubbing) scrubTo(e.clientX);
+    });
+    window.addEventListener("pointerup", () => { scrubbing = false; });
+  }
+
+  /* ---------- Aperture toy (Videography) ---------- */
+  const apertureSlider = document.getElementById("apertureSlider");
+  const apertureIris = document.getElementById("apertureIris");
+  const apertureValue = document.getElementById("apertureValue");
+  if (apertureSlider && apertureIris && apertureValue) {
+    const F_STOPS = ["f/22", "f/16", "f/11", "f/8", "f/5.6", "f/4", "f/2.8", "f/2", "f/1.4"];
+    const updateAperture = () => {
+      const v = Number(apertureSlider.value);
+      const size = 18 + (v / 100) * 65;
+      apertureIris.style.width = size + "%";
+      apertureIris.style.height = size + "%";
+      const idx = Math.min(F_STOPS.length - 1, Math.floor((v / 100) * F_STOPS.length));
+      apertureValue.textContent = F_STOPS[idx];
+    };
+    apertureSlider.addEventListener("input", updateAperture);
+    updateAperture();
+  }
+
+  /* ---------- Cube toy (3D & VFX) ---------- */
+  const cubeToy = document.getElementById("cubeToy");
+  if (cubeToy) {
+    let rotX = -20, rotY = 35;
+    let dragging = false, lastX = 0, lastY = 0;
+    const applyRotation = () => {
+      cubeToy.style.transform = `rotateX(${rotX}deg) rotateY(${rotY}deg)`;
+    };
+    cubeToy.addEventListener("pointerdown", (e) => {
+      dragging = true;
+      lastX = e.clientX; lastY = e.clientY;
+      cubeToy.classList.add("is-dragging");
+      cubeToy.setPointerCapture(e.pointerId);
+    });
+    cubeToy.addEventListener("pointermove", (e) => {
+      if (!dragging) return;
+      rotY += (e.clientX - lastX) * 0.5;
+      rotX -= (e.clientY - lastY) * 0.5;
+      lastX = e.clientX; lastY = e.clientY;
+      applyRotation();
+    });
+    ["pointerup", "pointercancel"].forEach((evt) => {
+      cubeToy.addEventListener(evt, () => {
+        dragging = false;
+        cubeToy.classList.remove("is-dragging");
+      });
     });
   }
 

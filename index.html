@@ -12,9 +12,9 @@
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="css/style.css?v=9">
+<link rel="stylesheet" href="css/style.css?v=13">
 </head>
 <body>
 
@@ -30,6 +30,19 @@
 
 <!-- ============ NOISE / GRAIN OVERLAY ============ -->
 <div class="grain" aria-hidden="true"></div>
+
+<!-- ============ DESIGNER GRID OVERLAY ============ -->
+<div class="grid-overlay" id="gridOverlay" aria-hidden="true">
+  <div class="grid-overlay__cols container">
+    <span></span><span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span><span></span>
+  </div>
+</div>
+<button class="grid-toggle" id="gridToggle" aria-label="Toggle design grid" data-cursor="link">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18M15 3v18M3 9h18M3 15h18"/></svg>
+  <span>Grid</span>
+  <kbd>G</kbd>
+</button>
 
 <!-- ============ HEADER ============ -->
 <header class="site-header" id="siteHeader">
@@ -215,6 +228,11 @@
           <ul class="service-card__tags">
             <li>Reels &amp; Shorts</li><li>YouTube</li><li>Colour Grading</li>
           </ul>
+          <div class="timeline-toy" id="timelineToy" data-cursor="link">
+            <div class="timeline-toy__waveform" id="timelineWaveform" aria-hidden="true"></div>
+            <div class="timeline-toy__playhead" id="timelinePlayhead"></div>
+          </div>
+          <span class="timeline-toy__time" id="timelineTime">00:00:00:00</span>
         </article>
 
         <article class="service-card reveal-up" data-delay="1">
@@ -226,6 +244,14 @@
           <ul class="service-card__tags">
             <li>Branding</li><li>Social Kits</li><li>Print</li>
           </ul>
+          <div class="palette" data-cursor="link">
+            <button class="palette__swatch" style="--swatch:#b8701f" data-hex="#B8701F" aria-label="Copy hex B8701F"></button>
+            <button class="palette__swatch" style="--swatch:#ff7a59" data-hex="#FF7A59" aria-label="Copy hex FF7A59"></button>
+            <button class="palette__swatch" style="--swatch:#0f9b8e" data-hex="#0F9B8E" aria-label="Copy hex 0F9B8E"></button>
+            <button class="palette__swatch" style="--swatch:#ff4d8d" data-hex="#FF4D8D" aria-label="Copy hex FF4D8D"></button>
+            <button class="palette__swatch" style="--swatch:#f4c95d" data-hex="#F4C95D" aria-label="Copy hex F4C95D"></button>
+            <span class="palette__hint">Click to copy a hex</span>
+          </div>
         </article>
 
         <article class="service-card reveal-up" data-delay="2">
@@ -237,6 +263,13 @@
           <ul class="service-card__tags">
             <li>Brand Films</li><li>Events</li><li>Interviews</li>
           </ul>
+          <div class="aperture-toy" data-cursor="link">
+            <div class="aperture-toy__ring">
+              <div class="aperture-toy__iris" id="apertureIris"></div>
+            </div>
+            <input type="range" class="aperture-toy__slider" id="apertureSlider" min="0" max="100" value="55" aria-label="Aperture">
+            <span class="aperture-toy__value" id="apertureValue">f/5.6</span>
+          </div>
         </article>
 
         <article class="service-card reveal-up" data-delay="3">
@@ -248,6 +281,19 @@
           <ul class="service-card__tags">
             <li>Blender</li><li>VFX Sims</li><li>3D Modeling</li>
           </ul>
+          <div class="cube-toy" data-cursor="link">
+            <div class="cube-toy__stage">
+              <div class="cube-toy__cube" id="cubeToy">
+                <div class="cube-toy__face cube-toy__face--front"></div>
+                <div class="cube-toy__face cube-toy__face--back"></div>
+                <div class="cube-toy__face cube-toy__face--right"></div>
+                <div class="cube-toy__face cube-toy__face--left"></div>
+                <div class="cube-toy__face cube-toy__face--top"></div>
+                <div class="cube-toy__face cube-toy__face--bottom"></div>
+              </div>
+            </div>
+            <span class="cube-toy__hint">Drag to rotate</span>
+          </div>
         </article>
       </div>
     </div>
@@ -469,6 +515,6 @@
   </div>
 </div>
 
-<script src="js/main.js?v=9"></script>
+<script src="js/main.js?v=13"></script>
 </body>
 </html>
