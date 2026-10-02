@@ -764,6 +764,15 @@ body.modal-open{ overflow:hidden; }
   transition: transform .5s var(--ease), box-shadow .5s var(--ease), border-color .4s;
 }
 .skill-card:hover{ transform: translateY(-8px); box-shadow: 0 30px 50px -30px rgba(0,0,0,.25); border-color: transparent; }
+.skill-card__media{
+  position:relative; display:flex; justify-content:center; align-items:center;
+  background: var(--bg-alt); border-radius:12px; padding:14px 0; margin:0 0 22px; overflow:hidden;
+}
+.skill-card__media img{ display:block; height:340px; width:auto; max-width:100%; object-fit:contain; border-radius:8px; box-shadow:0 14px 30px -14px rgba(0,0,0,.5); }
+.skill-card__media-tag{
+  position:absolute; left:12px; bottom:12px; font-size:.68rem; font-weight:600; padding:4px 10px;
+  border-radius:100px; background: rgba(0,0,0,.62); color:#fff; backdrop-filter: blur(6px);
+}
 .skill-card__top{ display:flex; align-items:flex-start; justify-content:space-between; gap:12px; }
 .skill-card__icon{
   width:50px; height:50px; border-radius:14px; background: var(--accent-soft); color: var(--accent);
