@@ -753,7 +753,7 @@ body.modal-open{ overflow:hidden; }
 
 /* ============ AI SKILLS PAGE ============ */
 .skills-hero{ padding:170px 0 10px; text-align:center; }
-.skills-hero .back-link{ display:inline-flex; margin-bottom:40px; }
+.skills-hero .back-link{ display:flex; width:fit-content; margin:0 auto 36px; }
 .skills-hero__sub{ margin:20px auto 0; max-width:620px; color: var(--text-soft); line-height:1.75; font-size:1.05rem; }
 
 .skills{ padding:70px 0 90px; }
@@ -773,6 +773,10 @@ body.modal-open{ overflow:hidden; }
   position:absolute; left:12px; bottom:12px; font-size:.68rem; font-weight:600; padding:4px 10px;
   border-radius:100px; background: rgba(0,0,0,.62); color:#fff; backdrop-filter: blur(6px);
 }
+.skill-card__body{ display:flex; flex-direction:column; flex:1; min-width:0; }
+.skill-card--feature{ grid-column: span 2; flex-direction:row; align-items:stretch; gap:34px; }
+.skill-card--feature .skill-card__media{ flex:0 0 auto; margin:0; padding:14px 16px; }
+.skill-card--feature h3{ font-size:1.45rem; }
 .skill-card__top{ display:flex; align-items:flex-start; justify-content:space-between; gap:12px; }
 .skill-card__icon{
   width:50px; height:50px; border-radius:14px; background: var(--accent-soft); color: var(--accent);
@@ -813,6 +817,8 @@ body.modal-open{ overflow:hidden; }
 @media (max-width: 600px){
   .work__grid{ grid-template-columns:1fr; }
   .skills-grid{ grid-template-columns:1fr; }
+  .skill-card--feature{ grid-column:auto; flex-direction:column; gap:0; }
+  .skill-card--feature .skill-card__media{ margin-bottom:22px; }
   .section-head--split{ align-items:flex-start; }
   .footer__inner{ flex-direction:column; text-align:center; }
   .order-steps ol{ grid-template-columns:1fr; }
