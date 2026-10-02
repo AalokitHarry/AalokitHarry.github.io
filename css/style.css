@@ -751,6 +751,33 @@ body.modal-open{ overflow:hidden; }
 .cube-toy__face--bottom{ transform: rotateX(-90deg) translateZ(28px); }
 .cube-toy__hint{ font-size:.72rem; color: var(--text-soft); }
 
+/* ============ AI SKILLS PAGE ============ */
+.skills-hero{ padding:170px 0 10px; text-align:center; }
+.skills-hero .back-link{ display:inline-flex; margin-bottom:40px; }
+.skills-hero__sub{ margin:20px auto 0; max-width:620px; color: var(--text-soft); line-height:1.75; font-size:1.05rem; }
+
+.skills{ padding:70px 0 90px; }
+.skills-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+.skill-card{
+  background: var(--surface); border:1px solid var(--line); border-radius: var(--radius);
+  padding:30px 28px; display:flex; flex-direction:column;
+  transition: transform .5s var(--ease), box-shadow .5s var(--ease), border-color .4s;
+}
+.skill-card:hover{ transform: translateY(-8px); box-shadow: 0 30px 50px -30px rgba(0,0,0,.25); border-color: transparent; }
+.skill-card__top{ display:flex; align-items:flex-start; justify-content:space-between; gap:12px; }
+.skill-card__icon{
+  width:50px; height:50px; border-radius:14px; background: var(--accent-soft); color: var(--accent);
+  display:flex; align-items:center; justify-content:center; flex-shrink:0;
+}
+.skill-card__icon svg{ width:24px; height:24px; }
+.skill-card__badge{ font-size:.7rem; font-weight:600; padding:5px 11px; border-radius:100px; background: var(--bg-alt); color: var(--text-soft); white-space:nowrap; }
+.skill-card h3{ font-size:1.2rem; font-weight:600; margin-top:18px; }
+.skill-card p{ margin-top:10px; color: var(--text-soft); line-height:1.65; font-size:.92rem; flex-grow:1; }
+.skill-card__tags{ display:flex; flex-wrap:wrap; gap:8px; margin-top:18px; }
+.skill-card__tags li{ font-size:.72rem; padding:5px 11px; border-radius:100px; background: var(--bg-alt); color: var(--text-soft); }
+.skill-card__foot{ display:flex; align-items:center; justify-content:space-between; gap:14px; margin-top:22px; padding-top:18px; border-top:1px solid var(--line); }
+.skill-card__meta{ font-size:.75rem; color: var(--text-soft); }
+
 /* ============ RESPONSIVE ============ */
 @media (max-width: 1180px){
   .services__grid{ grid-template-columns:repeat(2,1fr); }
@@ -769,12 +796,14 @@ body.modal-open{ overflow:hidden; }
   .product-page__inner .shop__gallery{ max-width:360px; }
   .order-steps ol{ grid-template-columns:repeat(2,1fr); }
   .work__grid{ grid-template-columns:repeat(2,1fr); }
+  .skills-grid{ grid-template-columns:repeat(2,1fr); }
   .stats{ grid-template-columns:repeat(2,1fr); }
   .modal__panel{ grid-template-columns:1fr; overflow-y:auto; }
   .modal__media{ min-height:220px; }
 }
 @media (max-width: 600px){
   .work__grid{ grid-template-columns:1fr; }
+  .skills-grid{ grid-template-columns:1fr; }
   .section-head--split{ align-items:flex-start; }
   .footer__inner{ flex-direction:column; text-align:center; }
   .order-steps ol{ grid-template-columns:1fr; }

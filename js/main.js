@@ -8,6 +8,7 @@
   /* ---------- Preloader ---------- */
   const preloader = document.getElementById("preloader");
   const preloaderFill = document.getElementById("preloaderFill");
+  const hero = document.getElementById("hero");
   let pct = 0;
   const fillTimer = setInterval(() => {
     pct += Math.random() * 18;
@@ -21,7 +22,7 @@
       preloaderFill.style.width = "100%";
       setTimeout(() => {
         preloader.classList.add("is-hidden");
-        document.getElementById("hero").classList.add("is-ready");
+        if (hero) hero.classList.add("is-ready");
       }, 250);
     }, 300);
   });
@@ -29,7 +30,7 @@
   // Fallback in case 'load' is slow/blocked
   setTimeout(() => {
     preloader.classList.add("is-hidden");
-    document.getElementById("hero").classList.add("is-ready");
+    if (hero) hero.classList.add("is-ready");
   }, 2600);
 
   /* ---------- Footer year ---------- */
@@ -489,17 +490,19 @@
   /* ---------- Copy email ---------- */
   const copyBtn = document.getElementById("copyEmailBtn");
   const copyToast = document.getElementById("copyToast");
-  copyBtn.addEventListener("click", async () => {
-    const email = document.getElementById("emailText").textContent.trim();
-    try {
-      await navigator.clipboard.writeText(email);
-    } catch (err) {
-      // Clipboard API unavailable — fall back to opening mail client
-      window.location.href = "mailto:" + email;
-    }
-    copyToast.classList.add("is-shown");
-    setTimeout(() => copyToast.classList.remove("is-shown"), 2000);
-  });
+  if (copyBtn && copyToast) {
+    copyBtn.addEventListener("click", async () => {
+      const email = document.getElementById("emailText").textContent.trim();
+      try {
+        await navigator.clipboard.writeText(email);
+      } catch (err) {
+        // Clipboard API unavailable — fall back to opening mail client
+        window.location.href = "mailto:" + email;
+      }
+      copyToast.classList.add("is-shown");
+      setTimeout(() => copyToast.classList.remove("is-shown"), 2000);
+    });
+  }
 
   /* ---------- Back to top ---------- */
   document.getElementById("toTopBtn").addEventListener("click", () => {
